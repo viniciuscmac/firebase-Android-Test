@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.viniciuscarvalhomachado.projetofirebase.DAO.ConfiguracaoFirebase;
+import com.example.viniciuscarvalhomachado.projetofirebase.Controller.ConfiguracaoFirebase;
 import com.example.viniciuscarvalhomachado.projetofirebase.Entidades.Usuarios;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

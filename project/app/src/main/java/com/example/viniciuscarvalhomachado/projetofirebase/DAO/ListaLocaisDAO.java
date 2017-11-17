@@ -1,8 +1,9 @@
 package com.example.viniciuscarvalhomachado.projetofirebase.DAO;
 
+import com.example.viniciuscarvalhomachado.projetofirebase.Controller.ConfiguracaoFirebase;
+import com.example.viniciuscarvalhomachado.projetofirebase.Controller.FirebaseEventListener;
 import com.example.viniciuscarvalhomachado.projetofirebase.Entidades.Local;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 /**
@@ -15,13 +16,18 @@ public class ListaLocaisDAO {
     private FirebaseAuth firebaseAuth;
 
     public ListaLocaisDAO(){
-        this.databaseReference = ConfiguracaoFirebase.getFirebase();
+
         this.firebaseAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        this.databaseReference = ConfiguracaoFirebase.getFirebase()
+                .child("lista")
+                .child(this.firebaseAuth.getUid());
     }
 
     public void writeLocal(Local local){
-        FirebaseUser user = this.firebaseAuth.getCurrentUser();
-        this.databaseReference.child("lista").child(user.getUid()).push().setValue(local);
+        this.databaseReference.push().setValue(local);
     }
 
+    public void readAssyncronousData(){
+        this.databaseReference.addValueEventListener(new FirebaseEventListener());
+    }
 }

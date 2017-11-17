@@ -1,4 +1,4 @@
-package com.example.viniciuscarvalhomachado.projetofirebase.DAO;
+package com.example.viniciuscarvalhomachado.projetofirebase.Controller;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
