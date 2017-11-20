@@ -15,7 +15,10 @@ public class Local {
     private double longitude;
     private String identificador;
 
-    public Local(@NonNull String identificador,@NonNull double latitude, @NonNull double longitude) {
+    public Local(@NonNull String identificador,
+                 @NonNull double latitude,
+                 @NonNull double longitude) {
+
         this.latitude = latitude;
         this.longitude = longitude;
         this.identificador = identificador;

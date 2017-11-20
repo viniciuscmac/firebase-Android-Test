@@ -1,6 +1,8 @@
 package com.example.viniciuscarvalhomachado.projetofirebase.Controller;
 
 import android.util.Log;
+
+import com.example.viniciuscarvalhomachado.projetofirebase.Entidades.AssyncronousListController;
 import com.example.viniciuscarvalhomachado.projetofirebase.Entidades.Local;
 
 import java.util.ArrayList;
@@ -19,8 +21,10 @@ public class FirebaseDataObserver implements Observer<Object> {
 
     private String tag = "RXANDROID";
     private List<Local> localList;
+    private AssyncronousListController assyncronousListController;
 
-    public FirebaseDataObserver(){
+    public FirebaseDataObserver(AssyncronousListController assyncronousListController){
+        this.assyncronousListController = assyncronousListController;
         this.localList = new ArrayList<>();
     }
 
@@ -49,5 +53,6 @@ public class FirebaseDataObserver implements Observer<Object> {
     @Override
     public void onComplete() {
         Log.d(this.tag, "onComplete");
+        this.assyncronousListController.setList(this.localList);
     }
 }
